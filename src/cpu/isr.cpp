@@ -3,10 +3,10 @@
 //(Shamelessely stolen | Adapted) from http://www.osdever.net/ 
 
 
-#include "../utils/typedefs.h"
+#include "typedefs.h"
 #include "idt.h"
-#include "../drivers/port_io.h"
-#include "../drivers/vga_graphics.h"
+#include "port_io.h"
+#include "vga_graphics.h"
 #include "timer.h"
 
 

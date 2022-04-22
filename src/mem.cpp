@@ -7,7 +7,7 @@
  * Have a look at the other functions, they're pretty ez to understand. Yes, this method sucks. Can you do better? Bet you can.
  */
 
-
+#include "mem.h"
 
 #define FREE_MEM 0x10000;
 

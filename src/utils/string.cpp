@@ -4,7 +4,7 @@
 * StringsEqu: returns true if strings are equal (max len 80)      *
 * StringStartsWith: returns true if s starts with t (max len 80)  *
 ******************************************************************/
-#include "../mem.h"
+#include "mem.h"
 
 const char* reverse(const char* str, char* buffer, int len){
 	int i;

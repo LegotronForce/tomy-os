@@ -4,7 +4,7 @@
 * 							     *
 ***********************************************************/
 
-#include "string.h"
+#include "conversions.h"
 
 char toStringRes[128];
 

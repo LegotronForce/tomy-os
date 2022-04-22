@@ -1,4 +1,4 @@
-#include "../utils/typedefs.h"
+#include "typedefs.h"
 
 /**************** SEND/RECEIVE BYTE ******************/
 void outb(uint16_t port, uint8_t data){

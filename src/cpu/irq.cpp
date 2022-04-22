@@ -1,7 +1,7 @@
-#include "../utils/typedefs.h"
-#include "../drivers/port_io.h"
-#include "../screen.h"
-#include "../utils/conversions.h"
+#include "typedefs.h"
+#include "port_io.h"
+#include "vga_graphics.h"
+#include "conversions.h"
 #include "idt.h"
 
 extern "C" void irq0();

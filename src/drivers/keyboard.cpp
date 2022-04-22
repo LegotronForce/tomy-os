@@ -1,13 +1,13 @@
-#include "../utils/typedefs.h"
-#include "../utils/conversions.h"
+#include "typedefs.h"
+#include "conversions.h"
 // #include "../screen.h"
 
-#include "./vga_graphics.h"
+#include "vga_graphics.h"
 #include "port_io.h"
 
-#include "../cpu/irq.h"
-#include "../utils/colors.h"
-#include "../utils/string.h"
+#include "irq.h"
+#include "colors.h"
+#include "string.h"
 
 /********************FUNCTIONS*********************
 * kb_install: installs keyboard IRQ handler       *
@@ -99,8 +99,21 @@ void keyboard_handler(struct regs *r) {
 
     } else {
         switch(scancode) {
-        case 0x4b: if(getCursorX()/8 <= 0) { setCursorX(VGA_GRAPHICS_WIDTH); setCursorY(getCursorY() - 8); } else { moveCursorUD(-1); } break;
-        case 0x4d: if(!(getCursorX()/8 >= VGA_GRAPHICS_MAX_CHAR_WIDTH)) { moveCursorUD(1); } else { setCursorX(VGA_GRAPHICS_WIDTH); setCursorY(getCursorY() - 8); }; break;
+        case 0x4b:
+            if(getCursorX()/8 <= 0) {
+                setCursorX(VGA_GRAPHICS_WIDTH);
+                setCursorY(getCursorY() - 8);
+            } else {
+                moveCursorUD(-1);
+            }    
+        break;
+
+        case 0x4d:
+            if(!(getCursorX()/8 >= VGA_GRAPHICS_MAX_CHAR_WIDTH)) {
+                moveCursorUD(8);
+            } else {
+                setCursorX(VGA_GRAPHICS_WIDTH); setCursorY(getCursorY() - 8);
+            }; break;
         case 0x48: moveCursorUD(-1); break;
         case 0x50: moveCursorUD(1); break;
         case 0x2a: shift_pressed = true; break;
@@ -110,9 +123,9 @@ void keyboard_handler(struct regs *r) {
                 setCursorX(320);
                 setCursorY(getCursorY() - 8);
             } else {
-                moveCursorLR(-1);
+                moveCursorLR(-8);
                 drawCharacterAtCursor(0x08, 0x0F);
-                moveCursorLR(-1);
+                moveCursorLR(-8);
             }
         break;
 
@@ -124,13 +137,6 @@ void keyboard_handler(struct regs *r) {
                 drawCharacterAtCursor(kbd_US[scancode], 0x0F);
             }
     	}
-        int x = getCursorX(), y = getCursorY();
-        setCursorPosition(16, 32);
-        print("X");
-        print(toString(x, 16));
-        print(" Y");
-        print(toString(y, 16));
-        setCursorPosition(x, y);
     }
 }
 

@@ -30,6 +30,7 @@
 *.exe
 *.out
 *.app
+*.iso
 
 # Folders
 .vscode
